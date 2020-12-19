@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sign up page :)</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+<body>
+        <div class = "button-home"> <a href = "index.html">Home</a></div>
+        <div class = "button-dash"> <a href = "dash.html">Dashboard</a></div>
+        <button class = "logout" onclick = "logout()">Log out</button>
+<div class="add-content">
+    <h1 id= "header">Add a budget item</h1>
+    <main>
+        <input type="text" name="title" id="title" placeholder="Name" required>
+        <input type="number" name="budget" id="budget" placeholder="Budget" required>
+        <button onclick = "addcontent()">Add</button>
+        <h1 id= "info"></h1>
+    </main>
+</div>
+<script>
+        function addcontent(){
+        const user_data = {
+            category: document.getElementById('title').value,
+            budg: document.getElementById('budget').value
+        };
+        axios.post('/api/addto',user_data)
+        .then(res =>{
+            document.getElementById('info').innerHTML = `Item has been added`
+            console.log(res);
+        })
+    }
+    function logout(){
+        const user_data = {
+            username: "",
+            password: ""
+        };
+        axios.post('/api/logout', user_data)
+        .then(res =>{
+            console.log(res);
+            if(res && res.data && res.data.success){
+                home();
+            }
+        })
+    }
+    function home(){
+        window.location.pathname = "index.html"
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Sign up page :)</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+<body>
+        <div class = "button-home"> <a href = "index.html">Home</a></div>
+        <div class = "button-login"> <a href = "login.html">Log in</a></div>
+<div class="signup-form">
+    <h1 id= "header">New User</h1>
+    <main>
+        <input type="text" name="username" id="username" placeholder="Username" required>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <button onclick = "signup()">Sign up</button>
+    </main>
+</div>
+
+<script>
+    function signup(){
+        const user_data = {
+            username: document.getElementById('username').value,
+            password: document.getElementById('password').value
+        };
+        axios.post('/api/signup', user_data)
+        .then(res =>{
+            console.log(res);
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+
+            if(res && res.data && res.data.success){
+                cText();
+            }
+            else{
+                cText2();
+            }
+        })
+    }
+    function cText(){
+        document.getElementById('header').innerHTML = "Account Created"
+        setTimeout(function() {
+            window.location.pathname = "login.html"
+        }, 2000);
+    }
+    function cText2(){
+        document.getElementById('header').innerHTML = "Username already in use"
+    }
+</script>
+</body>
+</html>

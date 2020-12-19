@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Personal Budget :)</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js" integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="./style.css" />
+</head>
+<body onload="retrieve()">
+<div class="top">
+        <ul>
+            <li>Personal Budget Dashboard</li>
+        </ul>
+</div>
+<button class = "logout" onclick = "logout()">Log out</button>
+<div class = "container center">
+    <div class = graph1><canvas id="myChart" width="400" height="400"></canvas></div>
+    <div class =  graph2><canvas id="myChart1" width="400" height="400"></canvas></div>
+    <div class = graph3><canvas id="myChart2" width="400" height="400"></canvas></div>
+</div>
+<div class= "button-data"> <a href = "data.html"> Input Data</a></div>
+<script>
+    var dataSource = {
+            datasets:[
+             {
+                data: [],
+                backgroundColor:[
+                ],
+             }
+        ],
+        labels:[
+            ]
+        };
+        var dataSource2 = {
+            datasets:[
+             {
+                 label: "Monthly Spending",
+                data: [],
+                backgroundColor:[
+                ],
+             }
+        ],
+        labels:[
+            ],
+            options:{
+                legend: {display: false},
+                title:{
+                    display: true,
+                    text: 'Monthly Spending'
+                }
+               
+            }
+        }
+        function createChart1(){
+            var ctx = document.getElementById("myChart").getContext("2d");
+            var myPieChart = new Chart(ctx,{
+               type: 'pie',
+               data: dataSource
+            });
+        }
+        function createChart2(){
+            var ctx = document.getElementById("myChart1").getContext("2d");
+            var myBarChart = new Chart(ctx, {
+                type: 'bar',
+                data: dataSource2
+            });
+        }
+        function createChart3(){
+            var ctx = document.getElementById("myChart2").getContext("2d");
+            var myPolarChart = new Chart(ctx, {
+                type: 'polarArea',
+                data: dataSource
+            });
+        }
+
+        function retrieve(){
+        axios.get('/api/retrieve')
+        .then(res =>{
+            for(var i = 0; i < res.data.label.length; i++){
+                dataSource.datasets[0].data[i] = res.data.price[i]
+                dataSource.labels[i] = res.data.label[i]
+                dataSource.datasets[0].backgroundColor[i] = res.data.color[i]
+                dataSource2.datasets[0].data[i] = res.data.price[i]
+                dataSource2.labels[i] = res.data.label[i]
+                dataSource2.datasets[0].backgroundColor[i] = res.data.color[i]
+            }
+            createChart1();
+            createChart2();
+            createChart3();
+
+            console.log(res);
+        })
+    }
+    function logout(){
+        const user_data = {
+            username: "",
+            password: ""
+        };
+        axios.post('/api/logout', user_data)
+        .then(res =>{
+            console.log(res);
+            if(res && res.data && res.data.success){
+                home();
+            }
+        })
+    }
+    function home(){
+        window.location.pathname = "index.html"
+    }
+</script>
+</body>
+</html>

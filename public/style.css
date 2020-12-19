@@ -1,0 +1,222 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color:#adadad;
+}
+div.top{
+    width: 100%;
+    background-color: black;
+    height: 60px;
+    padding: 0 40px;
+    font-size: 25px;
+    text-align: center;
+    color: white;
+    border-radius: 7px;
+}
+div.top ul,
+div.top ul li{
+    padding: 0 20px;
+    line-height:15px;
+    list-style: none;
+    display: inline-block;
+    text-decoration: none;
+    color: #fff
+}
+div.button-row{
+    position:fixed;
+    left:43%;
+    justify-content: center;
+}
+div.button-signup{
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width:100px;
+    text-align: center;
+    position: relative;
+    left: 90%;
+    border-radius: 7px;
+    border: 2px solid black;
+}
+div.button-signup a{
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-left:14px;
+    padding-right:14px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    color:black;
+    text-decoration:none;
+}
+div.button-signup:hover{
+    background-color: #4e64a3;
+}
+div.button-login{
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width:100px;
+    text-align: center;
+    position: relative;
+    border-radius: 7px;
+    left: 90%;
+    border: 2px solid black;
+}
+div.button-login a{
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-left:14px;
+    padding-right:14px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    color:black;
+    text-decoration:none;
+}
+div.button-login:hover{
+    background-color: #4e64a3;
+}
+div.button-data{
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width:200px;
+    text-align: center;
+    position: relative;
+    border-radius: 7px;
+    left: 45%;
+    border: 2px solid black;
+}
+div.button-data a{
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-left:10px;
+    padding-right:10px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    color:black;
+    text-decoration:none;
+}
+div.button-data:hover{
+    background-color: #4e64a3;
+}
+button.logout{
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width:100px;
+    text-align: center;
+    position: relative;
+    border-radius: 7px;
+    left: 90%;
+    border: 2px solid black;
+    background-color: transparent;
+    color: black;
+}
+button.logout:hover{
+    background-color: #4e64a3;
+}
+
+div.button-home,
+div.button-dash{
+    margin-top: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width:100px;
+    text-align: center;
+    position: relative;
+    border-radius: 7px;
+    left: 90%;
+    border: 2px solid black;
+}
+div.button-home a,
+div.button-dash a{
+    padding-top:12px;
+    padding-bottom:12px;
+    padding-left:14px;
+    padding-right:14px;
+    font-family: "Lucida Console", "Courier New", monospace;
+    color:black;
+    text-decoration:none;
+}
+div.button-home:hover,
+div.button-dash:hover{
+    background-color: #4e64a3;
+}
+.container div{
+display: inline-block;
+width: 100%;
+text-align: justify;
+margin: 10px;
+}
+.center{
+    text-align: center;
+}
+div.graph1{
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    border: 5px solid black;
+    margin:20px;
+}
+div.graph2{
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    border: 5px solid black;
+    margin:20px;
+}
+div.graph3{
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    border: 5px solid black;
+    margin:20px;
+}
+.signup-form{
+    width: 300px;
+    margin: 0 auto;
+    font-family: "Lucida Console", "Courier New", monospace;
+}
+.signup-form h1{
+    text-align: center;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+}
+.signup-form input[type="password"],
+.signup-form input[type="text"]{
+    width: 100%;
+    padding: 15px;
+    border: 1px solid black;
+    margin-bottom: 15px;
+}
+.signup-form button{
+    width: 100%;
+    padding: 15px;
+    border:0;
+    cursor: pointer;
+    font-weight: bold;
+}
+.signup-form button:hover{
+    background-color:#4e64a3;
+}
+
+.add-content h1{
+    text-align: center;
+    font-size: 24px;
+    padding: 20px 0 20px 0;
+}
+.add-content input[type="password"],
+.add-content input[type="text"]{
+    width: 100%;
+    padding: 15px;
+    border: 1px solid black;
+    margin-bottom: 15px;
+}
+.add-content button{
+    width: 100%;
+    padding: 15px;
+    border:0;
+    cursor: pointer;
+    font-weight: bold;
+}
+.add-content button:hover{
+    background-color:#4e64a3;
+}
